@@ -58,9 +58,7 @@ class FakerItem extends StatelessWidget {
       title: Text(title),
       subtitle: Text(subtitle),
       trailing: Text(company),
-      onTap: (
 
-      ),
       selectedTileColor: Colors.grey,
     );
   }
