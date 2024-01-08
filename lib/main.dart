@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'list_tile.dart' as custom_list_tile;
 
 void main(){
   runApp(MyApp());
@@ -11,12 +12,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("List View"),
+          centerTitle: true,
+          title: Text("List View", textAlign: TextAlign.center,),
         ),
         body: ListView(
           children: [
             Container(
-              height: 300,
+              height: 200,
               width: 300,
               color: Colors.red,
                 child: Center(
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
                 )
             ),
             Container(
-              height: 300,
+              height: 200,
               width: 300,
               color: Colors.green,
                 child: Center(
@@ -57,7 +59,7 @@ class MyApp extends StatelessWidget {
                 )
             ),
             Container(
-              height: 300,
+              height: 200,
               width: 300,
               color: Colors.yellow,
                 child: Center(
@@ -74,7 +76,7 @@ class MyApp extends StatelessWidget {
                 )
             ),
             Container(
-              height: 300,
+              height: 200,
               width: 300,
               color: Colors.purple,
                 child: Center(
@@ -92,7 +94,7 @@ class MyApp extends StatelessWidget {
               ),
 
             Container(
-              height: 300,
+              height: 200,
               width: 300,
               color: Colors.brown,
 
@@ -112,6 +114,8 @@ class MyApp extends StatelessWidget {
 
             ),
             Container(
+              height: 100,
+              width: 300,
               child: new Center(
                 child:  new Transform(
                   child:  new Text(
@@ -122,7 +126,22 @@ class MyApp extends StatelessWidget {
                     ..rotateZ(90 * 3.1415927 / 180),
                 ),
               ),
-            )
+            ),
+            Builder(
+              builder: (context) {
+                return ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => custom_list_tile.FormListTile()),
+                    );
+                  },
+                  child: Text('Ke Form List Tile'),
+                );
+              },
+            ),
+
+
           ],
         ),
       ),
