@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'list_tile.dart' as custom_list_tile;
 
 void main(){
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,31 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("List View", textAlign: TextAlign.center,),
+          backgroundColor: Colors.blueAccent,
+          title: const Text(
+            "List View",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white
+            ),
+          ),
+          actions: [
+            Builder(
+              builder: (context) {
+                return IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const custom_list_tile.FormListTile()),
+                      );
+                    },
+                    icon: Icon(Icons.arrow_forward_ios)
+
+                );
+              },
+            ),
+
+          ],
         ),
         body: ListView(
           children: [
@@ -24,7 +50,10 @@ class MyApp extends StatelessWidget {
                 child: Center(
                   child : Transform(
 
-                    child: Text(
+                    transform: Matrix4.identity()
+                      ..rotateZ(15 * 3.1415927 / 180),
+
+                    child: const Text(
                       'Pertama',
 
                       textAlign: TextAlign.center,
@@ -35,8 +64,6 @@ class MyApp extends StatelessWidget {
 
                       ),
                     ),
-                    transform: new Matrix4.identity()
-                      ..rotateZ(15 * 3.1415927 / 180),
                   ),
                   
                 )
@@ -45,7 +72,7 @@ class MyApp extends StatelessWidget {
               height: 200,
               width: 300,
               color: Colors.green,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Kedua',
                     textAlign: TextAlign.center,
@@ -62,7 +89,7 @@ class MyApp extends StatelessWidget {
               height: 200,
               width: 300,
               color: Colors.yellow,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Ketiga',
                     textAlign: TextAlign.center,
@@ -79,7 +106,7 @@ class MyApp extends StatelessWidget {
               height: 200,
               width: 300,
               color: Colors.purple,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Keempat',
                     textAlign: TextAlign.center,
@@ -98,7 +125,7 @@ class MyApp extends StatelessWidget {
               width: 300,
               color: Colors.brown,
 
-              child: Center(
+              child: const Center(
                 child: Text(
                   'kelima',
                   textAlign: TextAlign.center,
@@ -113,33 +140,33 @@ class MyApp extends StatelessWidget {
 
 
             ),
-            Container(
+            SizedBox(
               height: 100,
               width: 300,
-              child: new Center(
-                child:  new Transform(
-                  child:  new Text(
+              child: Center(
+                child:  Transform(
+                  alignment: FractionalOffset.center,
+                  transform: Matrix4.identity()
+                    ..rotateZ(90 * 3.1415927 / 180),
+                  child:  const Text(
                     "Lorem ipsum",
                   ),
-                  alignment: FractionalOffset.center,
-                  transform: new Matrix4.identity()
-                    ..rotateZ(90 * 3.1415927 / 180),
                 ),
               ),
             ),
-            Builder(
-              builder: (context) {
-                return ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => custom_list_tile.FormListTile()),
-                    );
-                  },
-                  child: Text('Ke Form List Tile'),
-                );
-              },
-            ),
+            // Builder(
+            //   builder: (context) {
+            //     return ElevatedButton(
+            //       onPressed: () {
+            //         Navigator.push(
+            //           context,
+            //           MaterialPageRoute(builder: (context) => const custom_list_tile.FormListTile()),
+            //         );
+            //       },
+            //       child: const Text('Ke Form List Tile'),
+            //     );
+            //   },
+            // ),
 
 
           ],
