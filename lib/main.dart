@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'list_tile.dart' as custom_list_tile;
-
+import 'FormMappingList.dart';
+import 'form_extract_widget.dart';
+import 'form_statefull_widget.dart';
+import 'FormTabBar.dart';
 void main(){
   runApp(const MyApp());
 }
@@ -14,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           title: const Text(
@@ -40,6 +44,139 @@ class MyApp extends StatelessWidget {
             ),
 
           ],
+
+        ),
+        drawer: Drawer(
+          child: Column(
+            children: [
+              Container(
+                color: Colors.red,
+                height: 150,
+                width: 400,
+                padding: EdgeInsets.all(20),
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  'Learn Flangter',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Builder(
+                builder: (context){
+                  return ListTile(
+                    leading: Icon(Icons.looks_one_outlined),
+                    title: Text("List View"),
+                    onTap: () {
+                      Navigator.pop(context);
+
+                    },
+                  );
+                },
+
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Builder(
+                builder: (context){
+                  return ListTile(
+                    leading: Icon(Icons.looks_two_outlined),
+                    title: Text("List Tile"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const custom_list_tile.FormListTile()),
+                      );
+                    },
+                  );
+                },
+
+              ),
+
+              SizedBox(
+                height: 2,
+              ),
+              Builder(
+                builder: (context){
+                  return ListTile(
+                    leading: Icon(Icons.looks_3_outlined),
+                    title: Text("Extract Widget and Faker"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FormExtractWidget()),
+                      );
+                    },
+                  );
+                },
+
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Builder(
+                builder: (context){
+                  return ListTile(
+                    leading: Icon(Icons.looks_4_outlined),
+                    title: Text("StateFul Widget"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FormStateFullWidget()),
+                      );
+                    },
+                  );
+                },
+
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Builder(
+                builder: (context){
+                  return ListTile(
+                    leading: Icon(Icons.looks_5_outlined),
+                    title: Text("Mapping List and ChildScrollView"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FormMappingList()),
+                      );
+                    },
+                  );
+                },
+
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Builder(
+                builder: (context){
+                  return ListTile(
+                    leading: Icon(Icons.looks_6_outlined),
+                    title: Text("Tab Bar, Text Field, Dialog and Switch"),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FormTabBar()),
+                      );
+                    },
+                  );
+                },
+
+              ),
+            ],
+          ),
         ),
         body: ListView(
           children: [

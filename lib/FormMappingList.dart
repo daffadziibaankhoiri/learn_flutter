@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/FormTabBar.dart';
 
 class FormMappingList extends StatelessWidget {
   FormMappingList({super.key});
@@ -53,8 +54,26 @@ class FormMappingList extends StatelessWidget {
     return  Scaffold(
        appBar: AppBar(
          backgroundColor: Colors.blueAccent,
-         title: Text('Mapping List dan ChildScroll'),
+         title: Text('Mapping List dan ChildScroll', style: TextStyle(color: Colors.white),),
          centerTitle: true,
+         actions: [
+           Builder(
+             builder: (context) {
+               return IconButton(
+                   onPressed: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => FormTabBar()),
+                     );
+                   },
+                   icon: Icon(Icons.arrow_forward_ios)
+
+               );
+             },
+           ),
+
+         ],
+
        ),
       body: ListView(
         children: myList.map((data){

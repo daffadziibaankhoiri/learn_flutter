@@ -57,9 +57,57 @@ class FormExtractWidget extends StatelessWidget {
             Expanded(child:  ListView.builder(
                 itemCount: 100,
                 itemBuilder: (context, index){
-                  return Column(
+                  return Dismissible(
+                    onDismissed: (direction){
+                      print(direction);
+                    },
+                    confirmDismiss: (direction){
+                      return showDialog(
+                          context : context,
+                        builder : (context){
+                            return AlertDialog(
+                              title: Text("Konfirmasi"),
+                              content: Text("Yakin ingin menghapus data ini?"),
+                              actions: [
+                                ElevatedButton(onPressed: (){
+                                  Navigator.of(context).pop(false);
+                                },
 
-                    children: [
+                                  child: Text(
+                                    "NO",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+
+                                ), ElevatedButton(onPressed: (){
+                                  Navigator.of(context).pop(true);
+                                }, child: Text(
+                                  "YES",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                )
+                                ),
+                              ],
+                            );
+                        }
+                      );
+                    },
+                      key: Key(index.toString()),
+                    direction: DismissDirection.endToStart,
+                    background: Container(
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.delete, size: 25,
+
+                      ),
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.only(right: 10),
+                    ),
+                    child:
 
 
                       FakerItem(
@@ -68,10 +116,10 @@ class FormExtractWidget extends StatelessWidget {
                         subtitle: faker.address.city(),
                         company: faker.company.name(),
                       ),
-                      const Divider(
-                        color: Colors.grey,
-                      ),
-                    ],
+                      // const Divider(
+                      //   color: Colors.grey,
+                      // ),
+
                   );
 
 
